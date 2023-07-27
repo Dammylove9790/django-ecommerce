@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container-fluid px-4 py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-5 col-sm-10 col-10 ">
+      <div class="card card-body mb-3">
+          <h5 class="card-title">Profile:</h5>
+        <hr>
+        <div class="card card-body">
+          <p class="card-text">Content</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-10 ">
+      <div class="card card-body mb-3">
+          <h5 class="card-title">Profile:</h5>
+        <hr>
+        <div class="card card-body">
+          <p class="card-text">Content</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-3 col-sm-4 col-10 ">
+      <div class="card card-body mb-3">
+          <h5 class="card-title">Total Orders:</h5>
+        <hr>
+        <div class="card card-body">
+          <p class="card-text">Content</p>
+        </div>
+      </div>
+    </div>
+  </div>    
+
+  <div class="row">
+    <div class="col">
+      <h4>My Orders List</h4>
+      <hr>
+      <div class="card card-body">
+        <a href="" class="btn btn-primary btn-sm btn-block rounded-pill"> Add Order </a>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Date Ordered</th>
+              <th>Status</th>
+              <th>Return</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+            <tr>
+              <td> {{order.product}} </td>
+              <td> {{order.product.category}} </td>
+              <td> {{order.product.price}} </td>
+              <td> {{order.dateCreated}} </td>
+              <td> {{order.status}} </td>
+              <td> <a href="#" class="link">Return</a> </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>  
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+  

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid px-4 py-5">
+
+<div class="row justify-content-center align-items-center g-2">
+  <div class="col">
+    <div class="card card-body">
+      <h4 class="card-title text-center">ALL PRODUCTS</h4>
+      <hr>
+      <table class="table table-striped">
+        <thead class="thead table-dark">
+          <tr>
+            <th>Product</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+          <tr>
+            <td> {{product.name}} </td>
+            <td><img src="https://github.com/mdo.png" alt="" width="50" height="50" class="rounded" /> </td>
+            <td> {{product.category}} </td>
+            <td> {{product.price}} </td>
+            <td> {{product.dateCreated}} </td>
+            <td> 
+              <a href="#" class="btn btn-success btn-sm">View</a> 
+              <a href="#" class="btn btn-danger btn-sm">Remove</a> 
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>  
+  </div>
+</div>
+</div>
+
+{% endblock content %}
+  

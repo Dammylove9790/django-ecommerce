@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid px-4 py-5">
+
+<div class="row justify-content-center align-items-center g-2">
+  <div class="col">
+    <div class="card card-body">
+      <h4 class="card-title text-center">USERS LIST</h4>
+      <hr>
+      <table class="table">
+        <thead class="thead table-dark">
+          <tr>
+            <th>user</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Date Added</th>
+            <th>Active</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td> {{user.name}} </td>
+            <td> {{user.email}} </td>
+            <td> {{user.phone}} </td>
+            <td> {{user.dateCreated}} </td>
+            <td> {{user.is_active}} </td>
+            <td> 
+              <a href="#" class="btn btn-success btn-sm">View</a> 
+              <a href="#" class="btn btn-primary btn-sm">Edit</a> 
+              <a href="#" class="btn btn-danger btn-sm">Remove</a> 
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>  
+  </div>
+</div>
+</div>
+
+{% endblock content %}
+  

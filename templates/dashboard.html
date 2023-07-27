@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container-fluid px-4 py-5">
+  <div class="row mb-4">
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
+                {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %} 
+    {% endif %}
+
+    <div class="col-lg-3 col-sm-6">
+      <div class="card text-center text-white bg-primary mb-3">
+        <div class="card-header">
+          <h5 class="card-title">Total Orders</h5>
+        </div>
+        <div class="card-body">
+                      
+            <h5 class="card-title"> {{total_orders}} </h5>
+
+          <p class="card-text">Content</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 ">
+      <div class="card text-center text-white bg-success mb-3">
+        <div class="card-header">
+          <h5 class="card-title">Orders Delivered</h5>
+        </div>
+        <div class="card-body">
+          
+            <h5 class="card-title"> {{delivered}} </h5>
+
+          <p class="card-text">Content</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 ">
+      <div class="card text-center text-white bg-warning mb-3">
+        <div class="card-header ">
+          <h5 class="card-title">Out for Delivery</h5>
+        </div>
+        <div class="card-body">
+          
+            <h5 class="card-title"> {{out_for_delivery}} </h5>
+          
+          <p class="card-text">Content</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 ">
+      <div class="card text-center text-white bg-danger mb-3">
+        <div class="card-header ">
+          <h5 class="card-title">Orders Pending</h5>
+        </div>
+        <div class="card-body">
+          
+          {% if pending == 0 %}
+            <h5 class="card-title"> 0 </h5>
+          {% else %}
+            <h5 class="card-title"> {{pending}} </h5>
+          {% endif %}
+          
+          <p class="card-text">Content</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-5 col-md-12 mb-4">
+      <h4>Users</h4>
+      <hr>
+      <div class="card card-body">
+        <a href="" class="btn btn-primary btn-sm btn-block rounded-pill"> Add User </a>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Users</th>
+              <th>Phone</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+            <tr>
+              <td> {{user.username}} </td>
+              <td> {{user.userprofile.phone}} </td>
+              <td> <a href="{% url 'user_dashboard' user.id %} " class="btn btn-sm btn-success">Details</a> </td>
+            </tr>
+            {% endfor %}
+          </tbody> 
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-7 col-md-12">
+      <h4>Orders List</h4>
+      <hr>
+      <div class="card card-body">
+        <a href="{% url 'create_order' %}" class="btn btn-primary btn-sm btn-block rounded-pill"> Create Order </a>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Date Ordered</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+            <tr>
+              <td> {{order.product}} </td>
+              <td> {{order.dateCreated}} </td>
+              <td> {{order.status}} </td>
+              <td> 
+                <a href="{% url 'update_order' order.id %}" class="btn btn-success btn-sm">View</a> 
+                <a href="{% url 'delete_order' order.id %}" class="btn btn-danger btn-sm">Remove</a> 
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>  
+    </div>
+  </div>
+</div>
+{% endblock content %}

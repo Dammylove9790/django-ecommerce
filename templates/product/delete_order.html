@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_style %}
+
+{% endblock page_style %}
+
+
+{% block content %}
+<div class="container-fluid px-4 py-5">
+    <form action="" method="POST">
+    {% csrf_token %}
+
+
+        <div class="bg-white p-4 rounded">
+            {% if update %}
+            <h1 class="h3 mb-3 fw-normal text-center">Update Order</h1>
+            {% else %}
+            <h1 class="h3 mb-3 fw-normal text-center">Creat An Order</h1>
+            {% endif %}
+            <hr>
+
+            <div class="card card-body mb-3">
+                <div class="row row-cols-3">
+                    {{form.as_p}}
+                </div>
+                <!-- <div class="row">
+                    <div class="col-lg-4 col-sm-5 col-12 mb-3 px-lg-2">
+                        <label for="" class="form-label">User</label>
+                        <select class="form-select" name="user" id="">
+                        {% for user in users %}
+                            <option value="">{{user.name}}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-5 col-12 mb-3 px-lg-2">
+                        <label for="" class="form-label">Products</label>
+                        <select class="form-select" name="product" id="">
+                        {% for product in products %}
+                            <option value="">{{product.name}}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="col-lg-4 col-sm-5 col-12 mb-3 px-lg-2">
+                        <label for="" class="form-label">Status</label>
+                        <select class="form-select" name="status" id="">
+                        {% for order in orders %}
+                            <option value="">{{order.status}}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                </div> -->
+            <div class="d-flex">
+                <button type="submit" class="btn btn-lg btn-primary px-5 ms-auto me-2">Create</button>
+            </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}
+  
